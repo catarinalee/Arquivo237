@@ -140,19 +140,21 @@ void ofApp::draw(){
     {
         y = ofGetHeight()/20 * i;
         float a = ofMap(aux[i], 50, 200, 0.3, 1);
-        float b = ofMap(aux[i], 50, 200, -20, 20);
+        float b = ofMap(aux[i], 50, 200, -10, 10);
 
         guitar.addVertex(ofPoint(x + 100 * a, y));
         guitar.addColor(colorGuitar);
         guitar.addVertex(ofPoint(x - 100 *a, y));
-        guitar.addColor(ofColor(colorGuitar.r + b*40, colorGuitar.g, colorGuitar.b));
+        guitar.addColor(ofColor(colorGuitar.r + b, colorGuitar.g, colorGuitar.b));
         
         y = ofGetHeight()/20 * i + ofGetHeight()/25;
         
         guitar.addVertex(ofPoint(x + 100 * a, y));
         guitar.addColor(colorGuitar);
         guitar.addVertex(ofPoint(x - 100 *a, y));
-        guitar.addColor(ofColor(colorGuitar.r + b*40, colorGuitar.g, colorGuitar.b));
+        guitar.addColor(ofColor(colorGuitar.r + b, colorGuitar.g, colorGuitar.b));
+        
+        cout<<colorGuitar.r + b<<" "<< colorGuitar.g<<" "<< colorGuitar.b<<endl;
 
     }
     
