@@ -19,7 +19,6 @@
 		1D17C5E01CEE491E00D9F491 /* kiss_fftr.c in Sources */ = {isa = PBXBuildFile; fileRef = 1D17C5D71CEE491E00D9F491 /* kiss_fftr.c */; };
 		1D17C5EE1CEE493000D9F491 /* ofxJSONElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1D17C5E41CEE493000D9F491 /* ofxJSONElement.cpp */; };
 		1D17C5EF1CEE493000D9F491 /* jsoncpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1D17C5ED1CEE493000D9F491 /* jsoncpp.cpp */; };
-		1D17C6201CEE4C8200D9F491 /* Intro.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1D17C61E1CEE4C8200D9F491 /* Intro.cpp */; };
 		1D17C63F1CEE4C9600D9F491 /* ofxEasing.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1D17C6251CEE4C9600D9F491 /* ofxEasing.cpp */; };
 		1D17C6401CEE4C9600D9F491 /* ofxEasingBack.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1D17C6271CEE4C9600D9F491 /* ofxEasingBack.cpp */; };
 		1D17C6411CEE4C9600D9F491 /* ofxEasingBounce.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1D17C6291CEE4C9600D9F491 /* ofxEasingBounce.cpp */; };
@@ -124,8 +123,6 @@
 		1D17C5EA1CEE493000D9F491 /* json-forwards.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "json-forwards.h"; sourceTree = "<group>"; };
 		1D17C5EB1CEE493000D9F491 /* json.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = json.h; sourceTree = "<group>"; };
 		1D17C5ED1CEE493000D9F491 /* jsoncpp.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = jsoncpp.cpp; sourceTree = "<group>"; };
-		1D17C61E1CEE4C8200D9F491 /* Intro.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Intro.cpp; sourceTree = "<group>"; };
-		1D17C61F1CEE4C8200D9F491 /* Intro.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Intro.h; sourceTree = "<group>"; };
 		1D17C6241CEE4C9600D9F491 /* easing_terms_of_use.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = easing_terms_of_use.html; sourceTree = "<group>"; };
 		1D17C6251CEE4C9600D9F491 /* ofxEasing.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ofxEasing.cpp; sourceTree = "<group>"; };
 		1D17C6261CEE4C9600D9F491 /* ofxEasing.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ofxEasing.h; sourceTree = "<group>"; };
@@ -523,8 +520,6 @@
 		E4B69E1C0A3A1BDC003C02F2 /* src */ = {
 			isa = PBXGroup;
 			children = (
-				1D17C61E1CEE4C8200D9F491 /* Intro.cpp */,
-				1D17C61F1CEE4C8200D9F491 /* Intro.h */,
 				1D17C5BA1CEE480F00D9F491 /* soundAnalyser.cpp */,
 				1D17C5BB1CEE480F00D9F491 /* soundAnalyser.h */,
 				E4B69E1D0A3A1BDC003C02F2 /* main.cpp */,
@@ -630,7 +625,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D17C6201CEE4C8200D9F491 /* Intro.cpp in Sources */,
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
 				1D17C64A1CEE4C9600D9F491 /* ofxEasingSine.cpp in Sources */,
