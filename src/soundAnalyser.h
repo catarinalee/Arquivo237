@@ -24,6 +24,8 @@ public:
     void draw();
     void getSpectum();
     ofxPanel gui;
+    
+    vector<float> getBass();
 
 private:
     ProcessFFT fft;
@@ -33,5 +35,7 @@ private:
     map <int,ofxFloatSlider> minVal ;
     ofSoundPlayer sound0, sound1, sound2, sound3, sound4, sound5;
     ofxJSONElement db;
+    
+    vector<float> bassSpec;
 };
 #endif /* soundAnalyser_h */

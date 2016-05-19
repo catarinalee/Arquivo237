@@ -2,6 +2,17 @@
 
 #include "ofMain.h"
 #include "ofxGui.h"
+#include "soundAnalyser.h"
+
+struct instrument
+{
+    ofxPanel panel;
+    ofParameter <float> speed;
+    ofParameter <float> volume;
+    ofParameter <float> pan;
+    ofSoundPlayer sound;
+    int bin;
+};
 
 class ofApp : public ofBaseApp{
 
@@ -26,7 +37,8 @@ class ofApp : public ofBaseApp{
     ofxPanel panelGuitar;
     ofParameter <float> speedGuitar;
     ofParameter <float> volumeGuitar;
-    
+    ofParameter <float> panGuitar;
+
     float * fftSmoothedGuitar;
     int nBandsToGetGuitar;
     
@@ -69,5 +81,9 @@ class ofApp : public ofBaseApp{
     ofxPanel panelHorn;
     ofParameter <float> speedHorn;
     ofParameter <float> volumeHorn;
+    
+    map<string, instrument> instruments;
+    soundAnalyser analyze;
+    
 		
 };

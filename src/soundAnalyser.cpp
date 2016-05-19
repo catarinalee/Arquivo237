@@ -17,12 +17,12 @@ void soundAnalyser::setup() {
 
     fft.setHistorySize(300);
     fft.setNormalize(false);
-    fft.setVolumeRange(200);
+    fft.setVolumeRange(400);
     verdana.loadFont("fonts/Gotham-Black.ttf", 20);
 
    // getSpectum();
-    fft.setNumFFTBins(6);
-    sound0.loadSound("bass.mp3");
+    fft.setNumFFTBins(20);
+    sound0.loadSound("strings.mp3");
     sound0.play();
     
    /* sound1.loadSound("drums.mp3");
@@ -38,14 +38,17 @@ void soundAnalyser::setup() {
     
 }
 
-
+vector<float> soundAnalyser::getBass()
+{
+    return bassSpec;
+}
 
 void soundAnalyser::update() {
 
     fft.update();
     // float val = fft.getSpectralCentroid();
     //verdana.drawString(ofToString(val), 100, 300);
-    vector<float> spec = fft.getSpectrum();
+    bassSpec = fft.getSpectrum();
     
     //  fft.getSmoothedUnScaledLoudestValue();
       

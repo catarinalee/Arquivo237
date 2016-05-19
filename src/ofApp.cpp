@@ -5,6 +5,15 @@ void ofApp::setup(){
     
     ofSetFrameRate(30);
     
+    
+ /*   instruments["Guitar"].sound.loadSound("guitar.mp3");
+    instruments["drums"].sound.loadSound("guitar.mp3");
+    instruments["strings"].sound.loadSound("guitar.mp3");
+    instruments["bass"].sound.loadSound("guitar.mp3");
+    instruments["sax"].sound.loadSound("guitar.mp3");
+    instruments["horn"].sound.loadSound("guitar.mp3");
+*/
+    
     // load in sounds:
     guitar.loadSound("guitars.mp3");
     guitar.setLoop(true);
@@ -20,30 +29,31 @@ void ofApp::setup(){
     
     drums.loadSound("drums.mp3");
     drums.setLoop(true);
-    drums.play();
+    //drums.play();
  
     
     strings.loadSound("strings.mp3");
     strings.setLoop(true);
-    strings.play();
+    //strings.play();
     
     bass.loadSound("bass.mp3");
     bass.setLoop(true);
-    bass.play();
+    //bass.play();
     
     sax.loadSound("saxophone.mp3");
     sax.setLoop(true);
-    sax.play();
+    //sax.play();
     
     horn.loadSound("french-horns.mp3");
     horn.setLoop(true);
-    horn.play();
+    //horn.play();
     
     // gui panels:
     panelGuitar.setup("Guitars", "settings.xml", 750, 100);
     panelGuitar.add(speedGuitar.set("Speed", 1.0, 0.25, 2.0));
     panelGuitar.add(volumeGuitar.set("Volume", 0.5, 0.0, 1.0));
-    
+    panelGuitar.add(panGuitar.set("Pan", 0.0, -1.0, 1.0));
+
     panelDrums.setup("Drums", "settings.xml", 750, 200);
     panelDrums.add(speedDrums.set("Speed", 1.0, 0.25, 2.0));
     panelDrums.add(volumeDrums.set("Volume", 0.5, 0.0, 1.0));
@@ -66,20 +76,16 @@ void ofApp::setup(){
     panelHorn.add(volumeHorn.set("Volume", 0.5, 0.0, 1.0));
     
     ofBackground(0);
-    
+    analyze.setup();
+
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-    
+    analyze.update();
     guitar.setSpeed(speedGuitar);
     guitar.setVolume(volumeGuitar);
-    
-    float * valGuitar = ofSoundGetSpectrum(nBandsToGetGuitar);
-    for (int i = 0;i < nBandsToGetGuitar; i++){
-        fftSmoothedGuitar[i] *= 0.01f;
-        if (fftSmoothedGuitar[i] < valGuitar[i]) fftSmoothedGuitar[i] = valGuitar[i];
-    }
+    guitar.setPan(panGuitar);
     
     drums.setSpeed(speedDrums);
     drums.setVolume(volumeDrums);
@@ -113,7 +119,7 @@ void ofApp::draw(){
 //    ofRect(0,0,ofGetWidth()/4,ofGetHeight());
     
     ofColor colorGuitar(255,speedGuitar*150,volumeGuitar*50);
-    ofMesh guitar;
+    /*ofMesh guitar;
     guitar.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
     guitar.addVertex(ofPoint(ofGetWidth()/6,0));
     guitar.addColor(colorGuitar);
@@ -122,10 +128,39 @@ void ofApp::draw(){
     guitar.addVertex(ofPoint(ofGetWidth()/6,ofGetHeight()));
     guitar.addColor(colorGuitar);
     guitar.addVertex(ofPoint(ofGetWidth()/2-(speedGuitar+volumeGuitar*100),ofGetHeight()));
-    guitar.addColor(ofColor::orangeRed);
+    guitar.addColor(ofColor::orangeRed);*/
+    
+    ofMesh guitar;
+    guitar.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
+
+    int x = ofGetWidth()/6 + panGuitar * 60;
+    int y = 0;
+    vector <float> aux = analyze.getBass();
+    for(int i = 0; i < 20; i++)
+    {
+        y = ofGetHeight()/20 * i;
+        float a = ofMap(aux[i], 50, 200, 0.3, 1);
+        float b = ofMap(aux[i], 50, 200, -1, 1);
+
+        guitar.addVertex(ofPoint(x + 100 * a, y));
+        guitar.addColor(colorGuitar);
+        guitar.addVertex(ofPoint(x - 100 *a, y));
+        guitar.addColor(colorGuitar + b*40);
+        
+        y = ofGetHeight()/20 * i + ofGetHeight()/25;
+        
+        guitar.addVertex(ofPoint(x + 100 * a, y));
+        guitar.addColor(colorGuitar);
+        guitar.addVertex(ofPoint(x - 100 *a, y));
+        guitar.addColor(colorGuitar + b*40);
+
+    }
+    
+    
+    
     guitar.draw();
     
-    ofColor colorSax(255,speedSax*150,volumeSax*50);
+   /* ofColor colorSax(255,speedSax*150,volumeSax*50);
     ofMesh sax;
     sax.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
     sax.addVertex(ofPoint(ofGetWidth()-(ofGetWidth()/4),0));
@@ -154,7 +189,7 @@ void ofApp::draw(){
     for (int i = 0;i < nBandsToGetGuitar; i++){
         ofSetColor(0);
         ofRect(10,10,20,fftSmoothedGuitar[i]*100);
-    }
+    }*/
     
     panelGuitar.draw();
     panelDrums.draw();
@@ -162,6 +197,8 @@ void ofApp::draw(){
     panelBass.draw();
     panelSax.draw();
     panelHorn.draw();
+    
+    ofCircle(ofGetMouseX(), ofGetMouseY(),5);
     
 }
 
