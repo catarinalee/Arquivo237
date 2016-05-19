@@ -13,7 +13,6 @@
 #include "ofMain.h"
 #include "ofxProcessFFT.h"
 #include "ofxGui.h"
-#include "ofxDelaunay.h"
 #include "ofxJSON.h"
 
 
