@@ -48,7 +48,8 @@ class ofApp : public ofBaseApp{
     ofxPanel panelDrums;
     ofParameter <float> speedDrums;
     ofParameter <float> volumeDrums;
-    
+    ofParameter <float> panDrums;
+
     
     
     ofSoundPlayer strings;
@@ -65,7 +66,8 @@ class ofApp : public ofBaseApp{
     ofxPanel panelBass;
     ofParameter <float> speedBass;
     ofParameter <float> volumeBass;
-    
+    ofParameter <float> panBass;
+
     
     
     ofSoundPlayer sax;
@@ -73,7 +75,8 @@ class ofApp : public ofBaseApp{
     ofxPanel panelSax;
     ofParameter <float> speedSax;
     ofParameter <float> volumeSax;
-    
+    ofParameter <float> panSax;
+
     
     
     ofSoundPlayer horn;
@@ -81,9 +84,13 @@ class ofApp : public ofBaseApp{
     ofxPanel panelHorn;
     ofParameter <float> speedHorn;
     ofParameter <float> volumeHorn;
-    
+    ofParameter <float> panHorn;
+
     map<string, instrument> instruments;
     soundAnalyser analyze;
     
+    map <string, ofxJSONElement> jsonvalues;
+    
+
 		
 };

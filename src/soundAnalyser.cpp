@@ -12,7 +12,7 @@
 
 void soundAnalyser::setup() {
     ofSetVerticalSync(true);
-    ofSetFrameRate(60);
+
     fft.setup();
 
     fft.setHistorySize(300);
@@ -25,6 +25,7 @@ void soundAnalyser::setup() {
     sound0.loadSound("strings.mp3");
     sound0.play();
     
+    
    /* sound1.loadSound("drums.mp3");
     sound1.play();
     sound2.loadSound("french-horns.mp3");
@@ -35,7 +36,7 @@ void soundAnalyser::setup() {
     sound4.play();
     sound5.loadSound("strings.mp3");
     sound5.play();*/
-    
+
 }
 
 vector<float> soundAnalyser::getBass()
@@ -49,7 +50,28 @@ void soundAnalyser::update() {
     // float val = fft.getSpectralCentroid();
     //verdana.drawString(ofToString(val), 100, 300);
     bassSpec = fft.getSpectrum();
-    
+    if(sound0.getIsPlaying())
+    {
+        float pos = (float)((int)(sound0.getPosition()*10000)/10000.0f);
+        cout <<pos<<endl;
+
+        for(int i = 0; i < bassSpec.size(); i++)
+        {
+            db[ofToString(pos)][i] = bassSpec[i];
+        }
+       // cout<<"Analysing"<<endl;
+        //cout<<db<<endl;
+
+    }
+    else
+    {
+        ofFile newfile(ofToDataPath("json/strings.json"), ofFile::WriteOnly);
+        //cout<<db<<endl;
+        newfile << db;
+
+        cout<<"Saved"<<endl;
+       // exit(1);
+    }
     //  fft.getSmoothedUnScaledLoudestValue();
       
 }
