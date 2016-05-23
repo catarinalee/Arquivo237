@@ -391,14 +391,24 @@ void ofApp::draw(){
         ofRect(10,10,20,fftSmoothedGuitar[i]*100);
     }*/
     
-    /*panelGuitar.draw();
+   /* panelGuitar.draw();
     panelDrums.draw();
     panelStrings.draw();
     panelBass.draw();
     panelSax.draw();
     panelHorn.draw();*/
     
-    ofCircle(ofGetMouseX(), ofGetMouseY(),5);
+    ofPushStyle();
+    ofSetColor(0,0,0);
+    ofDrawBitmapString("Guitar \nvol:" + ofToString(volumeGuitar) + "\nspeed:" + ofToString(speedGuitar)+ "\npan:" + ofToString(panGuitar), ofGetWidth()/7 - 30, ofGetHeight() - 50);
+    ofDrawBitmapString("Sax \nvol:" + ofToString(volumeSax) + "\nspeed:" + ofToString(speedSax)+ "\npan:" + ofToString(panSax), ofGetWidth()/7 *2 - 30, ofGetHeight() - 50);
+    ofDrawBitmapString("Horns \nvol:" + ofToString(volumeHorn) + "\nspeed:" + ofToString(speedHorn)+ "\npan:" + ofToString(panHorn), ofGetWidth()/7 *3- 30, ofGetHeight() - 50);
+    ofDrawBitmapString("Strings \nvol:" + ofToString(volumeStrings) + "\nspeed:" + ofToString(speedStrings)+ "\npan:" + ofToString(panStrings), ofGetWidth()/7 *4- 30, ofGetHeight() - 50);
+    ofDrawBitmapString("Bass \nvol:" + ofToString(volumeBass) + "\nspeed:" + ofToString(speedBass)+ "\npan:" + ofToString(panBass), ofGetWidth()/7 *5- 30, ofGetHeight() - 50);
+    ofDrawBitmapString("Drums \nvol:" + ofToString(volumeDrums) + "\nspeed:" + ofToString(speedDrums)+ "\npan:" + ofToString(panDrums), ofGetWidth()/7 *6- 30, ofGetHeight() - 50);
+    
+    ofPopStyle();
+    //ofCircle(ofGetMouseX(), ofGetMouseY(),5);
     
 }
 
@@ -565,13 +575,13 @@ void ofApp::keyReleased(int key)
         if(panBass > 1)
             panBass = 1;
     }
-    else if(key == '-')
+    else if(key == '\'')
     {
         panDrums -= 0.1;
         if(panDrums < -1)
             panDrums = -1;
     }
-    else if(key == '=')
+    else if(key == '+')
     {
         panDrums += 0.1;
         if(panDrums > 1)
@@ -615,7 +625,7 @@ void ofApp::keyReleased(int key)
         if(speedHorn > 2)
             speedHorn = 2;
     }
-    else if(key == ';')
+    else if(key == 231)//ç
     {
         speedStrings -= 0.1;
         if(speedStrings < -1)
@@ -627,19 +637,19 @@ void ofApp::keyReleased(int key)
         if(speedStrings > 2)
             speedStrings = 2;
     }
-    else if(key == '\'')
+    else if(key == '~')
     {
         speedBass -= 0.1;
         if(speedBass < -1)
             speedBass = -1;
     }
-    else if(key == '[')
+    else if(key == 'º')
     {
         speedBass += 0.1;
         if(speedBass > 2)
             speedBass = 2;
     }
-    else if(key == ']')
+    else if(key == '´')
     {
         speedDrums -= 0.1;
         if(speedDrums < -1)
